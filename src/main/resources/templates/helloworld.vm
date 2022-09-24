@@ -1,0 +1,219 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"/>
+    <title></title>
+    <style>
+    @page {
+                size: letter;
+                }
+
+.table-info{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #dddddd;
+}
+
+.invest{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #dddddd;
+}
+
+.line-gray{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #dddddd;
+  margin-top: 1%
+}
+
+.dados-cliente{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.list-invest{
+  font-family: arial;
+  width: 100%;
+  font-weight:normal;
+  margin-top: 1%
+}
+
+th{
+    font-weight:normal;
+}
+
+
+.info-pan{
+    width:100%;
+    display: flex;
+}
+
+.logo-img {
+  min-width : 150px;
+  max-width : 250px;
+}
+
+.logo-div{
+    width:49%;border: groove;
+}
+
+.pan-info{
+    width: 50%;border: groove;
+}
+
+.resume{
+  font-family: arial;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tr-resume{
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+<!--Inicio div principal -->
+<div style="width:100%">
+
+    <!-- inicio div header    -->
+
+    <div class="info-pan">
+
+        <div class="logo-div">
+            <img class="logo-img"
+                 src="$logo">
+        </div>
+
+        <div class="pan-info">
+            <table class="table-info">
+                <tr>
+                    <th style="text-align: center; padding: 6px">BANCO PAN S/A</th>
+                </tr>
+                <tr>
+                    <td>CNPJ: $cnpj</td>
+                </tr>
+                <tr>
+                    <td>Endereço: $endereco-banco
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ouvidoria: $ouvidoria</td>
+                </tr>
+                <tr>
+                    <td>Email: $email</td>
+                </tr>
+            </table>
+        </div>
+        <!-- fim div header    -->
+    </div>
+
+    <div style="width:100%; margin-top: 2%;">
+        <table class="line-gray">
+            <td style="border: 1px solid #dddddd; text-align: center; padding: 8px; background-color: #dddddd">POSIÇÃO
+                DE
+                INVESTIMENTO EM : $data
+            </td>
+        </table>
+    </div>
+
+    <div style="width:100%; margin-top: 2%;">
+        <table class="dados-cliente">
+            <tr>
+                <td>Cliente: $nome</td>
+                <td>CPF: $cpf</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Endereço: $endereco-cliente</td>
+                <td>Agência: $agencia</td>
+                <td>C/C: $conta</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>CEP: $cep</td>
+                <td>Cidade: $cidade</td>
+                <td>Bairro: $bairro</td>
+                <td>Telefone: $telefone</td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="width:100%, margin-top: 2%;">
+        <table class="line-gray">
+            <td style="border: 1px solid #dddddd; text-align: center; padding: 8px; background-color: #dddddd">OPERAÇÕES
+                DE RENDA FIXA (Over Ano)
+            </td>
+        </table>
+    </div>
+
+    <div style="width:100%, margin-top: 2%;">
+        <table class="list-invest">
+            <tr style="f">
+                <th>Papel</th>
+                <th>Nota</th>
+                <th>Indexador/Taxa</th>
+                <th>Emissão</th>
+                <th>Vencimento</th>
+                <th>Valor Aplicado</th>
+                <th>Saldo Bruto</th>
+                <th>IR</th>
+                <th>IOF</th>
+                <th>Saldo Líquido</th>
+                <th>Liquidez</th>
+            </tr>
+        </table>
+
+        <div style="width:100%, margin-top: 2%;">
+            <table class="line-gray">
+                <td style="border: 1px solid #dddddd; text-align: center; padding: 8px; background-color: #dddddd">RESUMO GERAL
+                </td>
+            </table>
+        </div>
+
+        <div>
+                    <table class="resume">
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">Total Aplicado</td>
+                            <td>$total-aplicado</td>
+                        </tr>
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">Saldo Atual Bruto</td>
+                            <td>$saldo-atual-bruto</td>
+                        </tr>
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">IRRF/IOF acumulado até a data</td>
+                            <td>$iof-atual</td>
+                        </tr>
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">Saldo Atual Liquido</td>
+                            <td>$saldo-atual-liquido</td>
+                        </tr>
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">Saldo Bloqueado Judicialmente</td>
+                            <td>$saldo-bloq-jud</td>
+                        </tr>
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">Saldo Bloqueado-outros</td>
+                            <td>$saldo-bloq-out</td>
+                        </tr>
+                        <tr class="tr-resume">
+                            <td style="font-weight: bold;">Saldo Bruto disponivel</td>
+                            <td>$saldo-bruto-disponivel</td>
+                        </tr>
+                    </table>
+                </div>
+
+    </div>
+    <!-- fim div principal   -->
+</div>
+</body>
+</html>
