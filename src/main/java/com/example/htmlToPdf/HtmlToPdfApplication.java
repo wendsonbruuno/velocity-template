@@ -45,7 +45,7 @@ public class HtmlToPdfApplication {
         HttpHeaders header = new HttpHeaders();
         header.setContentType(MediaType.APPLICATION_PDF);
         header.set(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=" + fileName.replace(" ", "_"));
+                "attachment; filename=" + fileName.replace(" ", "_")+ ".pdf");
         header.setContentLength(pdf.length);
         return new HttpEntity<byte[]>(pdf, header);
     }
