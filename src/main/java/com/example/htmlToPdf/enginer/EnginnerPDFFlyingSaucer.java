@@ -30,19 +30,18 @@ public class EnginnerPDFFlyingSaucer {
 		t.merge(context, writer);
 		System.out.println(writer.toString());
 		String pdfHtml = htmlToXhtml(writer.toString());
-		xhtmlToPdf(pdfHtml, fileName);
 
-		return null;
+		return xhtmlToPdf(pdfHtml, fileName).toByteArray();
 
 	}
 
 	private static void preenchendoContext(VelocityContext context) {
 		Path path = Paths.get("src/main/resources/templates/logo-pan.png");
+
 		String base64Image = convertToBase64(path);
-		context.put("logo", "data:image/png;base64,"+base64Image);
+		context.put("logo", base64Image);
 		context.put("cnpj", "059.285.411/0001-13");
-		context.put("endereco-banco", "PAULISTA 1374 11 ANDAR 1374 - 11 ANDAR\n" +
-				"- BELA VISTA - SAO PAULO - SP");
+		context.put("endereco-banco", "PAULISTA 1374 11 ANDAR 1374 - 11 ANDAR\n" + "- BELA VISTA - SAO PAULO - SP");
 		context.put("ouvidoria", "0800 7769595");
 		context.put("email", "pan@pan.com.br");
 		context.put("data", "24/03/2022");
@@ -54,6 +53,7 @@ public class EnginnerPDFFlyingSaucer {
 		context.put("cep", "05541000");
 		context.put("cidade", "SAO PAULO ");
 		context.put("bairro", "JARDIM DAS VERTENTE");
+		context.put("telefone", "(09) 67882227");
 		context.put("total-aplicado", "83.040,02");
 		context.put("saldo-atual-bruto", "85.870,73");
 		context.put("iof-atual", "65,26");
@@ -61,7 +61,6 @@ public class EnginnerPDFFlyingSaucer {
 		context.put("saldo-bloq-jud", "0,00");
 		context.put("saldo-bloq-out", "25,01");
 		context.put("saldo-bruto-disponivel", "85.845,44");
-
 	}
 
 	private static void initEngine(VelocityEngine ve) {
@@ -71,21 +70,20 @@ public class EnginnerPDFFlyingSaucer {
 		ve.init(props);
 	}
 
-
 	private static String htmlToXhtml(String html) {
 		Document document = Jsoup.parse(html);
 		document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);
 		return document.html();
 	}
 
-	private static void xhtmlToPdf(String xhtml, String outFileName) throws IOException {
-		File output = new File(outFileName+".pdf");
+	private static ByteArrayOutputStream xhtmlToPdf(String xhtml, String outFileName) throws IOException, DocumentException {
 		ITextRenderer iTextRenderer = new ITextRenderer(20f * 4f / 3f, 20);
+		iTextRenderer.getSharedContext().setReplacedElementFactory(new MediaReplacedElementFactory(iTextRenderer.getSharedContext().getReplacedElementFactory()));
 		iTextRenderer.setDocumentFromString(xhtml);
 		iTextRenderer.layout();
-		OutputStream os = new FileOutputStream(output);
-		iTextRenderer.createPDF(os);
-		os.close();
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		iTextRenderer.createPDF(baos);
+		return baos;
 	}
 
 	static String convertToBase64(Path path) {

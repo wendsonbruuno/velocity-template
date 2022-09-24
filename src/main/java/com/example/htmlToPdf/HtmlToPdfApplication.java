@@ -15,10 +15,13 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.xml.sax.SAXException;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 @SpringBootApplication
 @RestController
@@ -29,10 +32,16 @@ public class HtmlToPdfApplication {
     }
 
     @GetMapping("/pdf/{fileName}")
-    HttpEntity<Void> createPdf(
-            @PathVariable("fileName") String fileName) throws IOException {
+    HttpEntity<byte[]> createPdf(
+            @PathVariable("fileName") String fileName) throws IOException, ParserConfigurationException, SAXException {
         try {
-            EnginnerPDFFlyingSaucer.createPdf(fileName);
+        	 byte[] pdf = EnginnerPDFFlyingSaucer.createPdf(fileName);
+            HttpHeaders header = new HttpHeaders();
+            header.setContentType(MediaType.APPLICATION_PDF);
+            header.set(HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=" + fileName.replace(" ", "_")+ ".pdf");
+            header.setContentLength(pdf.length);
+            return new HttpEntity<byte[]>(pdf, header);
         } catch (DocumentException e) {
             e.printStackTrace();
         }

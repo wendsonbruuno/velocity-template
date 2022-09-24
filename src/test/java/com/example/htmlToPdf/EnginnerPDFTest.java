@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.xml.sax.SAXException;
 
 import java.io.*;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 @ExtendWith(MockitoExtension.class)
 class EnginnerPDFTest {
@@ -16,7 +19,7 @@ class EnginnerPDFTest {
 	EnginnerPDFFlyingSaucer enginner;
 
 	@Test
-	void createPdf() {
+	void createPdf() throws ParserConfigurationException, SAXException {
 		try {
 			enginner.createPdf("teste");
 			//byteArrayToFile(pdf);
