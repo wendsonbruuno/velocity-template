@@ -88,7 +88,7 @@ public class EnginnerPDFFlyingSaucer {
 		os.close();
 	}
 
-	private static String convertToBase64(Path path) {
+	static String convertToBase64(Path path) {
 		byte[] imageAsBytes = new byte[0];
 		try {
 			Resource resource = new UrlResource(path.toUri());
