@@ -14,7 +14,11 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 public class EnginnerPDFFlyingSaucer {
@@ -61,6 +65,28 @@ public class EnginnerPDFFlyingSaucer {
 		context.put("saldo-bloq-jud", "0,00");
 		context.put("saldo-bloq-out", "25,01");
 		context.put("saldo-bruto-disponivel", "85.845,44");
+		
+		
+		Map<String, String> item = new HashMap<>();
+		item.put("papel", "GUARDAR DINHEIRO");
+		item.put("nota", "1040166");
+		item.put("indicador-taxa", "103,00% CDI / 0,00");
+		item.put("emissao", "17/05/2021");
+		item.put("vencimento", "17/05/2021");
+		item.put("valor-aplicado", "35.000,00");
+		item.put("saldo-bruto", "37.635,85");
+		item.put("ir", "31,95");
+		item.put("iof", "31,95");
+		item.put("saldo-liquido", "37.635,85");
+		item.put("liquidez", "25/01/2024");
+		
+		List<Map<String, String>> lista = new ArrayList<>(); 
+		
+		for (int i = 0; i < 15; i++) {
+			lista.add(item);
+		}
+		
+		context.put("lista", lista);
 	}
 
 	private static void initEngine(VelocityEngine ve) {

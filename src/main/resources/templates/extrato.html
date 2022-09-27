@@ -197,19 +197,23 @@ table caption {
 					<th>Saldo Líquido</th>
 					<th>Liquidez</th>
 				</tr>
+				
+				#foreach( $item in $lista )
 				<tr style="font-size: 10px;">
-					<td class="align-center">GUARDAR DINHEIRO</td>
-					<td class="align-center">1040166</td>
-					<td class="align-center">103,00% CDI / 0,00</td>
-					<td class="align-center">17/05/2021</td>
-					<td class="align-center">17/05/2021</td>
-					<td class="align-center">35.000,00</td>
-					<td class="align-center">37.635,85</td>
-					<td class="align-center">31,95</td>
-					<td class="align-center">31,95</td>
-					<td class="align-center">37.635,85</td>
-					<td class="align-center">25/01/2024</td>
+					<td class="align-center">$item.papel</td>
+					<td class="align-center">$item.nota</td>
+					<td class="align-center">$item.indicador-taxa</td>
+					<td class="align-center">$item.emissao</td>
+					<td class="align-center">$item.vencimento</td>
+					<td class="align-center">$item.valor-aplicado</td>
+					<td class="align-center">$item.saldo-bruto</td>
+					<td class="align-center">$item.ir</td>
+					<td class="align-center">$item.iof</td>
+					<td class="align-center">$item.saldo-liquido</td>
+					<td class="align-center">$item.liquidez</td>
 				</tr>
+				#end
+				
 			</table>
 		</div>
 
