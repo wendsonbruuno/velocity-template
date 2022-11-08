@@ -17,6 +17,10 @@ th {
 	font-weight: normal;
 }
 
+td {
+	min-height: 11px;
+}
+
 .table {
 	width: 100%;
 	table-layout: fixed;
@@ -24,7 +28,7 @@ th {
 
 table caption {
 	background-color: #dcdcdc;
-	border: 1px solid black;
+	border-bottom: 1px solid black;
 	padding: 5px;
 }
 
@@ -32,8 +36,37 @@ table caption {
 	text-align: center;
 }
 
+.table-no-spacing {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+.table-border-bottom td {
+	border-bottom: 1px solid black;
+}
+
 .border {
 	border: black thin solid;
+}
+
+.border-left {
+	border-left: 1px solid black;
+}
+
+.border-right {
+	border-right: 1px solid black;
+}
+
+.border-bottom {
+	border-bottom: 1px solid black;
+}
+
+.width-100 {
+	width: 100%
 }
 
 .font-bold {
@@ -60,39 +93,39 @@ table caption {
 
 <body>
 	<!--Inicio div principal -->
-	<div style="width: 100%">
+	<div class="width-100 border" style="height: 100%">
 
 		<!-- inicio div header    -->
 
-		<div style="width: 97%; margin: 0 auto;">
-			<table class="table">
+		<div class="width-100" style="margin: 0 auto;">
+			<table class="table table-no-spacing table-border-bottom">
 				<tr>
-					<td class="border" style="width: 55%;">
+					<td class="no-padding" style="width: 60%;">
 						<div id="logo" class="media" data-base64="$logo"
-							style="width: 177px; height: 70px; margin: 0 auto;" />
+							style="width: 177px; height: 70px; margin: 0 auto; padding: 30px" />
 					</td>
-					<td width="10px"></td>
-					<td class="border" style="width: 45%;">
-						<table>
-							<tr>
-								<td colspan="2" class="font-bold align-center"
-									style="font-size: 15px;">BANCO PAN S/A</td>
+					<td class="no-padding" style="width: 40%;">
+						<table class="width-100 border-left"
+							style="border-collapse: collapse;">
+							<tr style="height: 26px;">
+								<td colspan="2" class="font-bold align-left"
+									style="font-size: 15px;">Nota de Negociação de Titulos</td>
 							</tr>
-							<tr>
-								<td class="font-bold">CNPJ:</td>
-								<td>$cnpj</td>
+							<tr style="height: 26px;">
+								<td style="width: 100px">Código Operação:</td>
+								<td class="align-left">1519771</td>
 							</tr>
-							<tr>
-								<td class="font-bold vertical-align-top">Endereço:</td>
-								<td>$endereco-banco</td>
+							<tr style="height: 26px;">
+								<td style="width: 100px">Número da Nota:</td>
+								<td class="align-left">1111375</td>
 							</tr>
-							<tr>
-								<td class="font-bold">Ouvidoria:</td>
-								<td>$ouvidoria</td>
+							<tr style="height: 26px;">
+								<td style="width: 100px">Tipo de Operação:</td>
+								<td class="align-left">Emissao</td>
 							</tr>
-							<tr>
-								<td class="font-bold">Email:</td>
-								<td>$email</td>
+							<tr style="height: 26px;">
+								<td style="width: 100px; border: none;">Data da Operação:</td>
+								<td style="border: none;" class="align-left">23/08/2022</td>
 							</tr>
 						</table>
 					</td>
@@ -101,12 +134,12 @@ table caption {
 			</table>
 		</div>
 
-		<div style="width: 100%; margin-top: 2%;">
+		<div class="width-100 border-bottom" style="margin-top: 0.5px">
 			<table class="table">
-				<caption>POSIÇÃO DE INVESTIMENTO EM: $data</caption>
+				<caption>Dados do Cliente</caption>
 
 				<tr>
-					<td width="60%">
+					<td width="65%">
 						<table style="width: 100%; border-spacing: 0;">
 							<tr>
 								<td style="width: 0;">Cliente:</td>
@@ -114,10 +147,10 @@ table caption {
 							</tr>
 						</table>
 					</td>
-					<td width="40%">CPF: $cpf</td>
+					<td width="35%">CNPJ/CPF: $cnpj-cpf</td>
 				</tr>
 				<tr>
-					<td width="60%">
+					<td colspan="2">
 						<table style="width: 100%; border-spacing: 0;">
 							<tr>
 								<td style="width: 0;">Endereço:</td>
@@ -125,36 +158,13 @@ table caption {
 							</tr>
 						</table>
 					</td>
-					<td>
-						<table style="border-spacing: 0;">
-							<tr>
-								<td style="width: 50%">
-									<table style="width: 100%; border-spacing: 0;">
-										<tr>
-											<td style="width: 0;">Agência:</td>
-											<td class="align-left" style="padding-left: 5px">$agencia</td>
-										</tr>
-									</table>
-								</td>
-								<td width="15px"></td>
-								<td>
-									<table style="width: 100%; border-spacing: 0;">
-										<tr>
-											<td style="width: 20px; white-space: nowrap;">C/C:</td>
-											<td class="align-left" style="padding-left: 5px">$conta</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
-					</td>
 				</tr>
 				<tr>
-					<td width="60%">
+					<td colspan="2">
 						<table style="width: 100%; border-spacing: 0;">
 							<tr>
 								<td style="width: 100px">CEP: $cep</td>
-								<td style="width: 170px">
+								<td style="width: 210px">
 									<table style="width: 100%; border-spacing: 0;">
 										<tr>
 											<td style="width: 0;">Cidade:</td>
@@ -174,82 +184,224 @@ table caption {
 						</table>
 
 					</td>
-					<td>Telefone: $telefone</td>
-
 				</tr>
 			</table>
 		</div>
 
-		<div style="width: 100%; margin-top: 2%;">
-			<table class="table">
-				<caption>OPERAÇÕES DE RENDA FIXA (Over Ano)</caption>
-				<tr style="border-bottom: 1px solid black; font-size: 9px;"
-					class="align-center">
-					<th>Papel</th>
-					<th>Nota</th>
-					<th style="white-space: nowrap;">Indexador/Taxa</th>
-					<th>Emissão</th>
-					<th>Vencimento</th>
-					<th>Valor Aplicado</th>
-					<th>Saldo Bruto</th>
-					<th>IR</th>
-					<th>IOF</th>
-					<th>Saldo Líquido</th>
-					<th>Liquidez</th>
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption>Característica do Título</caption>
+				<tr class="align-center" style="font-size: 10px;">
+					<th width="135px" class="border-bottom">Título</th>
+					<th class="border-bottom border-left">Emissão</th>
+					<th class="border-bottom border-left">Vencimento</th>
+					<th width="100px" class="border-bottom border-left">Local de
+						Custódia</th>
+					<th class="border-bottom border-left">Indexador</th>
+					<th class="border-bottom border-left">Percent.</th>
+					<th class="border-bottom border-left">Taxa Nominal</th>
 				</tr>
-				
-				#foreach( $item in $lista )
-				<tr style="font-size: 10px;">
-					<td class="align-center">$item.papel</td>
-					<td class="align-center">$item.nota</td>
-					<td class="align-center">$item.indicador-taxa</td>
-					<td class="align-center">$item.emissao</td>
-					<td class="align-center">$item.vencimento</td>
-					<td class="align-center">$item.valor-aplicado</td>
-					<td class="align-center">$item.saldo-bruto</td>
-					<td class="align-center">$item.ir</td>
-					<td class="align-center">$item.iof</td>
-					<td class="align-center">$item.saldo-liquido</td>
-					<td class="align-center">$item.liquidez</td>
+
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="135px" class="border-bottom">$caracteristica-titulo.titulo</td>
+					<td class="border-bottom border-left">$caracteristica-titulo.emissao</td>
+					<td class="border-bottom border-left">$caracteristica-titulo.vencimento</td>
+					<td width="100px" class="border-bottom border-left">$caracteristica-titulo.local-custodia</td>
+					<td class="border-bottom border-left">$caracteristica-titulo.indexador</td>
+					<td class="border-bottom border-left">$caracteristica-titulo.percentual</td>
+					<td class="border-bottom border-left">$caracteristica-titulo.taxa-nominal</td>
 				</tr>
-				#end
-				
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="135px" class="border-bottom">Codigo IF</td>
+					<td colspan="6" class="border-bottom border-left"></td>
+				</tr>
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="135px" class="border-bottom">$caracteristica-titulo.codigo-if</td>
+					<td colspan="6" class="border-bottom border-left"></td>
+				</tr>
 			</table>
 		</div>
 
-		<div style="width: 100%; margin-top: 2%;">
-			<table class="table table-resume">
-				<caption>RESUMO GERAL</caption>
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption>Característica do Operação</caption>
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="33%" class="border-bottom">Quantidade</td>
+					<td width="33%" class="border-bottom border-left">PU Operação
+					</td>
+					<td width="33%" class="border-bottom border-left">Forma
+						Liquidação</td>
+				</tr>
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="33%" class="border-bottom">$caracteristica-operacao.quantidade
+					</td>
+					<td width="33%" class="border-bottom border-left">$caracteristica-operacao.pu-operacao
+					</td>
+					<td width="33%" class="border-bottom border-left">$caracteristica-operacao.forma-liquidacao
+					</td>
+				</tr>
 
 				<tr>
-					<td class="font-bold align-right">Total Aplicado</td>
-					<td class="align-left">$total-aplicado</td>
+					<td colspan="3" class="no-padding">
+						<table class="width-100" style="border-collapse: collapse;">
+							<tr class="align-center" style="font-size: 10px;">
+								<td width="25%" class="border-bottom">Valor Bruto</td>
+								<td width="25%" class="border-bottom border-left">IR</td>
+								<td width="25%" class="border-bottom border-left">IOF</td>
+								<td width="25%" class="border-bottom border-left">Valor
+									Liquido</td>
+							</tr>
+							<tr class="align-center" style="font-size: 10px;">
+								<td width="25%" class="border-bottom">$caracteristica-operacao.valor-bruto</td>
+								<td width="25%" class="border-bottom border-left">$caracteristica-operacao.if</td>
+								<td width="25%" class="border-bottom border-left">$caracteristica-operacao.iof</td>
+								<td width="25%" class="border-bottom border-left">$caracteristica-operacao.valor-liquido</td>
+							</tr>
+						</table>
+					</td>
 				</tr>
-				<tr>
-					<td class="font-bold align-right">Saldo Atual Bruto</td>
-					<td class="align-left">$saldo-atual-bruto</td>
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="33%" class="border-bottom">Condição de Resgate</td>
+					<td colspan="2" class="border-bottom border-left"></td>
 				</tr>
-				<tr>
-					<td class="font-bold align-right">IRRF/IOF acumulado até a
-						data</td>
-					<td class="align-left">$iof-atual</td>
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="33%" class="border-bottom">$caracteristica-operacao.condicao-resgate</td>
+					<td colspan="2" class="border-bottom border-left"></td>
 				</tr>
+			</table>
+		</div>
+
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption>Característica do Compromisso</caption>
 				<tr>
-					<td class="font-bold align-right">Saldo Atual Liquido</td>
-					<td class="align-left">$saldo-atual-liquido</td>
+					<td colspan="3" class="no-padding">
+						<table class="width-100" style="border-collapse: collapse;">
+							<tr class="align-center" style="font-size: 10px;">
+								<td width="20%" class="border-bottom">Taxa</td>
+								<td width="20%" class="border-bottom border-left">Prazo</td>
+								<td width="20%" class="border-bottom border-left">PU
+									retorno</td>
+								<td width="20%" class="border-bottom border-left">Indexador</td>
+								<td width="20%" class="border-bottom border-left">Vencimento</td>
+							</tr>
+							<tr class="align-center" style="font-size: 10px;">
+								<td width="20%" class="border-bottom">$caracteristica-compromisso.taxa</td>
+								<td width="20%" class="border-bottom border-left">$caracteristica-compromisso.prazo</td>
+								<td width="20%" class="border-bottom border-left">$caracteristica-compromisso.pu-retorno</td>
+								<td width="20%" class="border-bottom border-left">$caracteristica-compromisso.indexador</td>
+								<td width="20%" class="border-bottom border-left">$caracteristica-compromisso.vencimento</td>
+							</tr>
+						</table>
+					</td>
 				</tr>
-				<tr>
-					<td class="font-bold align-right">Saldo Bloqueado
-						Judicialmente</td>
-					<td class="align-left">$saldo-bloq-jud</td>
+
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="33%" class="border-bottom">Valor de Retorno Bruto</td>
+					<td width="33%" class="border-bottom border-left">IR Retido</td>
+					<td width="33%" class="border-bottom border-left">Valor de
+						Retorno Líquido</td>
 				</tr>
-				<tr>
-					<td class="font-bold align-right">Saldo Bloqueado-outros</td>
-					<td class="align-left">$saldo-bloq-out</td>
+				<tr class="align-center" style="font-size: 10px;">
+					<td width="33%" class="border-bottom">$caracteristica-compromisso.valor-retorno-bruto
+					</td>
+					<td width="33%" class="border-bottom border-left">$caracteristica-compromisso.ir-retido
+					</td>
+					<td width="33%" class="border-bottom border-left">$caracteristica-compromisso.valor-retorno-liquido
+					</td>
 				</tr>
+			</table>
+		</div>
+
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption class="align-left">Caracteristicas de
+					Resgate/Remuneração/Dados Complementares</caption>
+
+				<tr class="align-left" style="font-size: 10px; min-height: 30px;">
+					<td class="border-bottom" style="white-space: break-spaces;"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption class="align-left">Fluxo de Carência e Liquidez</caption>
+
+				<tr class="align-left" style="font-size: 10px; min-height: 30px;">
+					<td class="border-bottom" style="white-space: break-spaces;">24/08/2022</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption class="align-left font-bold">Importante</caption>
+
+				<tr class="align-left vertical-align-top" style="font-size: 10px;">
+					<td class="border-bottom"
+						style="white-space: break-spaces; min-height: 50px;">$importante</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
+				<caption class="align-left font-bold">Observações</caption>
+
+				<tr class="align-left vertical-align-top" style="font-size: 10px;">
+					<td class="border-bottom"
+						style="white-space: break-spaces; min-height: 50px;">$observacoes</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="width-100" style="margin-top: 0.5px">
+			<table class="table table-no-spacing"
+				style="border-collapse: collapse;">
 				<tr>
-					<td class="font-bold align-right">Saldo Bruto disponivel</td>
-					<td class="align-left">$saldo-bruto-disponivel</td>
+					<td class="no-padding border-right">
+						<table class="table table-no-spacing"
+							style="border-collapse: collapse;">
+							<caption class="align-left font-bold">Atendimento ao
+								Cliente</caption>
+
+							<tr class="align-left vertical-align-top"
+								style="font-size: 10px; min-height: 110px;">
+								<td style="white-space: break-spaces;">Tel.: 0800 7769595 -
+									E-mail: - PAULISTA 1374 11 ANDAR 1374 - 11 ANDAR - BELA VISTA -
+									SAO PAULO - SP</td>
+						</table>
+					</td>
+
+					<td style="width: 15px"></td>
+					<td class="no-padding "
+						style="height: 100%; vertical-align: bottom;">
+
+						<table class="table table-no-spacing"
+							style="border-collapse: collapse;">
+
+							<tr class="align-left" style="font-size: 10px;">
+								<td>______________________________________________________________</td>
+							</tr>
+							<tr class="align-left font-bold" style="font-size: 10px;">
+								<td>BANCO PAN S/A</td>
+							</tr>
+							<tr class="align-left font-bold" style="font-size: 10px;">
+								<td>C.N.P.J.: $cnpj</td>
+							</tr>
+							<tr class="align-left font-bold" style="font-size: 10px;">
+								<td>SAO PAULO 23 de agosto de 2022</td>
+							</tr>
+						</table>
+					</td>
 				</tr>
 			</table>
 		</div>
